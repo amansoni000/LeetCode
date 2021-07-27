@@ -7,8 +7,6 @@ class Solution:
                 minm=prices[i]
             elif prices[i]-minm>max1:
                 max1=prices[i]-minm
-            # for j in range(i+1,len(prices)):
-            #     profit=prices[j]-prices[i]
-            #     max1=max(profit,max1)
+            
         return max1
             
