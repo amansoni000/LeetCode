@@ -12,21 +12,6 @@ class Solution {
                 profit = Math.max(profit,high-lowest);
             }
         }
-        // for(int i=0;i<n;i++){
-        //     if(lowest>prices[i]){
-        //         lowest=prices[i];
-        //         j=i;
-        //     }
-        // }
-        // for(int i=j;i<n;i++){
-        //     if(high<prices[i]){
-        //         high=prices[i];
-        //     }
-        // }
-        // System.out.print(j);
-        // System.out.print(lowest);
-        // System.out.print(high);
-        // profit = high - lowest;
         return profit;
     }
 }
