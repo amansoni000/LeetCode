@@ -1,41 +1,50 @@
 class Solution {
-    public int[] sortArray(int[] nums) {
-        int l,start,end;
-        l = nums.length;
-        start = 0;
-        end = l-1;
-        quickshort(nums,start,end);
-        return nums;        
-        
-    }
-    public static void swap(int[] nums,int n_j,int pivott){
-        int temp;
-        temp=nums[n_j];
-        nums[n_j]=nums[pivott];
-        nums[pivott]=temp;
-    }
-    public static void quickshort(int[] nums,int start,int end){
-        if(start<end){
-            int pivot;
-            pivot = partition(nums,start,end);
-            quickshort(nums,start,pivot-1);
-            quickshort(nums,pivot+1,end);
+    public void mergesort(int[] nums,int left,int right){
+        if(left<right){
+            int mid = (left+right)/2;
+            mergesort(nums,left,mid);
+            mergesort(nums,mid+1,right);
+            merge(nums,left,mid,right);
         }
     }
-    public static int partition(int[] nums,int start,int end){
-        int i;
-        int pivot_new;
-        pivot_new = nums[end];
-        i=start-1;
-        for(int j=start;j<=end-1;j++){
-            if(nums[j]<pivot_new){
-                i++;
-                swap(nums,i,j);
-                    
+    public void merge(int[] nums,int left,int mid,int right){
+        int temp=0;
+        int len1 = mid-left+1;
+        int len2 = right-mid;
+        int[] arr1 = new int[len1];
+        int[] arr2 = new int[len2];
+        
+        for(int i=0;i<len1;i++){
+            arr1[i]=nums[left+i];
+        }
+        for(int i=0;i<len2;i++){
+            arr2[i]=nums[mid+1+i];
+        }
+        int i=0,j=0,k=left;
+        while(i<len1&&j<len2){
+            if(arr1[i]>arr2[j]){
+                nums[k]=arr2[j];
+                j++;
             }
+            else{
+                nums[k]=arr1[i];
+                i++;
+            }
+            k++;
         }
-        swap(nums, i + 1, end);
-    return (i + 1);
-        
+        while(i<len1){
+            nums[k]=arr1[i];
+            i++;
+            k++;
+        }
+        while(j<len2){
+            nums[k]=arr2[j];
+            j++;
+            k++;
+        }
+    }
+    public int[] sortArray(int[] nums) {
+        mergesort(nums,0,nums.length-1);
+        return nums;
     }
 }
