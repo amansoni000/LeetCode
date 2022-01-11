@@ -5,7 +5,7 @@ class Solution {
             dp[i] = true;
         }
         int count=0;
-        for(int i=2;i<n;i++){
+        for(int i=2;i<=(int)Math.sqrt(n);i++){
             if(dp[i] && (long)i*i <n){
                 for(int j= i*i;j<n;j+=i){
                     dp[j] = false;
