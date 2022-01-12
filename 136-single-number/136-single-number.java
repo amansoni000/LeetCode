@@ -1,10 +1,10 @@
 class Solution {
     public int singleNumber(int[] nums) {
         // XOR 
-        int sum=0, n=nums.length;
+        int result=0, n=nums.length;
         for(int i=0;i<n;i++){
-            sum ^= nums[i];
+            result ^= nums[i];
         }
-        return sum;
+        return result;
     }
 }
