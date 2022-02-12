@@ -23,9 +23,7 @@ class Solution {
             sum += root.left.val;
             // System.out.println(root.left.val);
         }
-        else{
-            sumOfLeftLeaves(root.left);
-        }
+        sumOfLeftLeaves(root.left);
         sumOfLeftLeaves(root.right);
         return sum;
     }
