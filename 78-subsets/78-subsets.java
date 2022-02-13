@@ -9,7 +9,7 @@ class Solution {
                 // System.out.println(x);
                 x.add(nums[i]);
                 if(x.size() > 1 && x.get(0) == x.get(1)) break;
-                if(!ls.contains(x)) ls.add(x);
+                ls.add(x);
             }
         }
         return ls;
