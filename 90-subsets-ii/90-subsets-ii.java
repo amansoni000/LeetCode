@@ -2,7 +2,7 @@ class Solution {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> ls = new ArrayList<>();
         Set<List<Integer>> hs = new HashSet<>();
-        hs.add(new  ArrayList<>());
+        hs.add(new ArrayList<>());
         for(int i=0; i<nums.length; i++){
             Set<List<Integer>> hs1 = new HashSet<>();
             for(List<Integer> list:hs){
