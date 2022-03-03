@@ -10,24 +10,16 @@ class Solution {
             }
             else{
                 diff = nums[i] - nums[i-1];
-                if(count >= 3){
-                    dp[j++] = count;
-                }
+                if(count >= 3) dp[j++] = count;
                 count = 1;
             }
         }
-        if(count >= 3){
-            dp[j++] = count;
-        }
-        count = 1;
+        if(count >= 3) dp[j++] = count;
         for(i=0; i<dp.length; i++){
             if(dp[i] != 0){
                 ans += ((dp[i] - 2)*(dp[i]-1))/2;
             }
         }
-        // for(i=0; i<dp.length; i++){
-        //     System.out.print(dp[i] +" ");
-        // }
         return ans;
     }
 }
