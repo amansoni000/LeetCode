@@ -17,7 +17,7 @@ class Solution {
     int pos = 0;
     public TreeNode helper(int[] inorder, int[] postorder, int mid, int n, HashMap<Integer, Integer> map){
         // System.out.println(pos);
-        if(mid > n || pos < 0){
+        if(mid > n){
             return null;
         }
         TreeNode root = new TreeNode(postorder[pos--]);
