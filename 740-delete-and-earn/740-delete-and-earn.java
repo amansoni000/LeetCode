@@ -1,7 +1,6 @@
 class Solution {
     public int deleteAndEarn(int[] nums) {
         if(nums.length == 1) return nums[0];
-        HashMap<Integer, Integer> map = new HashMap<>();
         int[] arr = new int[10000 + 1];
         int maxNumber = 0;
         for(int i = nums.length-1; i >= 0; i--){
