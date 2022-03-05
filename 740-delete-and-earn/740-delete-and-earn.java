@@ -1,17 +1,15 @@
 class Solution {
     public int deleteAndEarn(int[] nums) {
-        if(nums.length == 1) return nums[0];
-        int[] arr = new int[10000 + 1];
-        int maxNumber = 0;
-        for(int i = nums.length-1; i >= 0; i--){
-            arr[nums[i]] += nums[i];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int num : nums){
+            map.put(num, map.getOrDefault(num, 0) + num);
         }
-        int[] dp = new int[10000 + 3];
-        int j=2;
-        for(int i = arr.length-1 ;i >= 0; i--){
-            dp[j] = Math.max(dp[j-2] + arr[i],dp[j-1]);
-            j++;
+        int[] dp = new int[10000 + 1];
+        dp[1] = map.getOrDefault(1,0);
+        for(int i = 2 ;i < dp.length; i++){
+            int value = map.getOrDefault(i, 0);
+            dp[i] = Math.max(dp[i-2] + value ,dp[i-1]);
         }
-        return dp[10002];
+        return dp[10000];
     }
 }
