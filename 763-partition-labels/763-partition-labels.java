@@ -8,7 +8,7 @@ class Solution {
         }
         int max = last_idx.get(arr[0]), i = 0;
         while(i < s.length()){
-            String str = "";
+            int len = 0;
             while(i < s.length()){
                 if(i > max){
                     max = Math.max(last_idx.get(arr[i]), max);
@@ -16,11 +16,11 @@ class Solution {
                 }
                 else{
                     max = Math.max(last_idx.get(arr[i]), max);
-                    str += s.charAt(i);
+                    len++;
                     i++;
                 }
             }
-            list.add(str.length());
+            list.add(len);
         }
         return list;
     }
