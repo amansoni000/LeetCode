@@ -16,26 +16,26 @@
 class Solution {
     int mid = 1;
     void helper(int[] preorder, TreeNode root, int start, int end){
-        // if(root == null && start == preorder.length) return;
         if(start <= end){
-            // System.out.println(root.val);
-            TreeNode temp1 = new TreeNode(preorder[start]);
             int i = start, mid = start;
             while(preorder[i] < root.val && i < preorder.length){
                 mid++;
                 i++;
             }
+            TreeNode temp1 = new TreeNode(preorder[start]);
             if(start != mid) root.left= temp1;
             else root.left = null;
+            
             helper(preorder, root.left, start+1, mid);
             TreeNode temp2 = new TreeNode(preorder[mid]);
+            
             if(mid != end) root.right= temp2;
             else root.right = null;
+            
             helper(preorder, root.right, mid + 1, end);
+            
         }
-        else{
-            return;
-        } 
+        else return;
     }
     public TreeNode bstFromPreorder(int[] preorder1) {
         int[] preorder = new int[preorder1.length + 1];
