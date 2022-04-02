@@ -1,4 +1,14 @@
 class Solution {
+    public boolean helper(String s, int start, int end){
+        while(start < end){
+            if(s.charAt(start) == s.charAt(end)){
+                start++;
+                end--;
+            }
+            else return false;
+        }
+        return true;
+    }
     public boolean validPalindrome(String s) {
         int i = 0, j = s.length() - 1;
         boolean flag = true;
@@ -7,25 +17,9 @@ class Solution {
                 i++;
                 j--;
             }
-            else break;
-        }
-        int start = i, end = j;
-        while(i + 1 < j){
-            if(s.charAt(i + 1) == s.charAt(j)){
-                i++;
-                j--;
-            }
             else{
-                flag = false;
-                break;
+                return (helper(s, i+1, j) || helper(s, i, j-1));
             }
-        }
-        while(start < end - 1 && flag == false){
-            if(s.charAt(start ) == s.charAt(end - 1)){
-                start++;
-                end--;
-            }
-            else return false;
         }
         return true;
     }
