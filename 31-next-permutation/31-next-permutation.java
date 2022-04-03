@@ -4,6 +4,11 @@ class Solution {
         nums[ptr1] = nums[ptr2];
         nums[ptr2] = temp;
     }
+    public void reverse(int[] nums, int start, int end){
+        while(start < end){
+            swap(nums, start++, end--);
+        }
+    }
     public void nextPermutation(int[] nums){
         int len = nums.length, idx = 0;
         for(int i = len - 1; i > 0; i--){
@@ -12,15 +17,15 @@ class Solution {
                 break;
             }
         }
-        Arrays.sort(nums, idx, len);
-        if(idx != 0){
-            for(int i = idx; i < len; i++){
-                if(nums[i] > nums[idx - 1]){
-                    swap(nums, idx - 1, i);
-                    break;
-                }
-            }
+        if(idx == 0){
+            reverse(nums, idx, len - 1);
+            return;
         }
-        Arrays.sort(nums, idx, len);
+        int j = len - 1;
+        while( j >= 0 && nums[j] <= nums[idx - 1]){
+            j--;
+        }
+        swap(nums, idx - 1, j);
+        reverse(nums, idx, len - 1);
     }
 }
