@@ -19,19 +19,18 @@ class Solution {
         }
         curr = head;
         while(curr != null){
-            if(count == len - k) temp2 = curr.val;
+            if(count == len - k){ 
+                temp2 = curr.val;
+                break;
+            }
             curr = curr.next;
             count++;
         }
         curr = head;
         count = 1;
         while(curr != null){
-            if(count == k){
-                curr.val = temp2;
-            }
-            if(count == len - k){
-                curr.val = temp1;
-            }
+            if(count == k) curr.val = temp2;
+            if(count == len - k) curr.val = temp1;
             curr = curr.next;
             count++;
         }
