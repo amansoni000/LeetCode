@@ -25,9 +25,7 @@ class Solution {
         }
         curr = head;
         count = 1;
-        // System.out.println(temp1.val + " " +len);
         while(curr != null){
-            // System.out.println(temp1 +" "+ temp2 + " " +len);
             if(count == k){
                 curr.val = temp2;
             }
