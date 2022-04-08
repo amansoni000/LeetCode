@@ -1,20 +1,29 @@
 class KthLargest {
-    ArrayList<Integer> list = new ArrayList<>();
-    int target;
+    private static int k;
+    private PriorityQueue<Integer> heap;
+    
     public KthLargest(int k, int[] nums) {
-        for(int i : nums){
-            list.add(i);
+        this.k = k;
+        heap = new PriorityQueue<>();
+        
+        for (int num: nums) {
+            heap.offer(num);
         }
-        target = k;
+        
+        while (heap.size() > k) {
+            heap.poll();
+        }
     }
     
     public int add(int val) {
-        list.add(val);
-        Collections.sort(list);
-        return list.get(list.size() - target);
+        heap.offer(val);
+        if (heap.size() > k) {
+            heap.poll();
+        }
+
+        return heap.peek();
     }
 }
-
 /**
  * Your KthLargest object will be instantiated and called as such:
  * KthLargest obj = new KthLargest(k, nums);
