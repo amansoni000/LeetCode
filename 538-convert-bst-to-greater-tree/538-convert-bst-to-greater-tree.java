@@ -19,15 +19,14 @@ class Solution {
     HashMap<Integer, Integer> map = new HashMap<>();
     public void traversal(TreeNode root){
         if(root == null) return;
+        traversal(root.left);
         if(flag == true) list.add(root.val);
         else root.val = map.get(root.val);
-        traversal(root.left);
         traversal(root.right);
     }
     public TreeNode convertBST(TreeNode root) {
         traversal(root);
         flag = false;
-        Collections.sort(list);
         int sum = 0;
         for(int i = list.size() - 1; i >= 0; i--){
             sum += list.get(i);
