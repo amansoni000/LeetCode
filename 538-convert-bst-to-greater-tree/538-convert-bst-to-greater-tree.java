@@ -20,9 +20,7 @@ class Solution {
     public void traversal(TreeNode root){
         if(root == null) return;
         if(flag == true) list.add(root.val);
-        if(flag == false){
-            root.val = map.get(root.val);
-        }
+        else root.val = map.get(root.val);
         traversal(root.left);
         traversal(root.right);
     }
