@@ -15,22 +15,21 @@
  */
 class Solution {
     boolean flag = true;
+    int k = 0, sum = 0;
     List<Integer> list = new ArrayList<>();
-    HashMap<Integer, Integer> map = new HashMap<>();
     public void traversal(TreeNode root){
         if(root == null) return;
         traversal(root.left);
         if(flag == true) list.add(root.val);
-        else root.val = map.get(root.val);
+        else root.val = list.get(k++);
         traversal(root.right);
     }
     public TreeNode convertBST(TreeNode root) {
         traversal(root);
         flag = false;
-        int sum = 0;
         for(int i = list.size() - 1; i >= 0; i--){
             sum += list.get(i);
-            map.put(list.get(i) , sum);
+            list.set(i, sum);
         }
         traversal(root);
         return root;
