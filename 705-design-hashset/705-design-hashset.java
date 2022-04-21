@@ -5,16 +5,13 @@ class MyHashSet {
     }
     
     public void add(int key) {
-        if(!contains(key)){
-            list.add(key);
-        }
+        list.add(key);
     }
     
     public void remove(int key) {
-        if(contains(key)){
-            Integer val = key;
-            list.remove(val);
-        }
+        List<Integer> val = new ArrayList<>();
+        val.add(key);
+        list.removeAll(val);
     }
     
     public boolean contains(int key) {
