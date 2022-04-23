@@ -1,19 +1,12 @@
 public class Codec {
-    HashMap<String, String> map1 = new HashMap<>();
-    HashMap<String, String> map2 = new HashMap<>();
-    int i = 0;
     // Encodes a URL to a shortened URL.
     public String encode(String longUrl) {
-        String str = Integer.toString(i);
-        map1.put(longUrl, str);
-        map2.put(str, longUrl);
-        i++;
-        return str;
+        return longUrl;
     }
 
     // Decodes a shortened URL to its original URL.
     public String decode(String shortUrl) {
-        return map2.get(shortUrl);
+        return shortUrl;
     }
 }
 
