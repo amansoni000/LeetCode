@@ -16,8 +16,10 @@ class Solution {
                 stack_count.pop();
             }
         }
-        String str = "";
-        for(int i = 0; i < stack_str.size(); i++) str += stack_str.elementAt(i);
-        return str;
+        StringBuilder sb = new StringBuilder();
+        for(var c: stack_str) {
+             sb.append(c);
+        }
+        return sb.toString();
     }
 }
