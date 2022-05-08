@@ -16,8 +16,10 @@ class Solution {
                 stack_count.pop();
             }
         }
-        StringBuilder sb=new StringBuilder();
-        while(stack_str.size() > 0) sb.append(stack_str.pop());
-        return sb.reverse().toString();
+        StringBuilder sb = new StringBuilder();
+        for(var c: stack_str) {
+             sb.append(c);
+        }
+        return sb.toString();
     }
 }
