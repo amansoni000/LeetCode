@@ -23,9 +23,7 @@ class Solution {
             else{
                 Stack<String> temp_stack = new Stack<>();
                 while(!stack.isEmpty()){
-                    for(int j = 0; j < s.length(); j++){
-                        temp_stack.push(stack.peek() + s.charAt(j));
-                    }
+                    for(int j = 0; j < s.length(); j++) temp_stack.push(stack.peek() + s.charAt(j));
                     stack.pop();
                 }
                 stack = temp_stack;
@@ -35,7 +33,6 @@ class Solution {
         while(!stack.isEmpty()){
             ans.add(stack.pop());
         }
-        // System.out.println(stack);
         return ans;
     }
 }
