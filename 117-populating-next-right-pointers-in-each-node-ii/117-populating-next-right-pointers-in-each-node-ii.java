@@ -30,7 +30,7 @@ class Solution {
         traversal(root.left, map, level + 1);
         traversal(root.right, map, level + 1);
     }
-    public Node connect(Node root) {
+    public Node connect(Node root){
         HashMap<Integer, List<Node>> map = new HashMap<>();
         traversal(root, map, 0);
         for (Map.Entry<Integer, List<Node>> entry : map.entrySet()){
