@@ -10,16 +10,14 @@
 
 class Solution {
     TreeNode ans = null;
-    public void traverse(TreeNode cloned, int value){
-        if(cloned == null) return;
-        // System.out.println(cloned.val + " ");
-        if(cloned.val == value) ans = cloned;
-        traverse(cloned.left, value);
-        traverse(cloned.right, value);
+    public void traverse(TreeNode original, TreeNode cloned, TreeNode target){
+        if(cloned == null || original == null) return;
+        if(original == target) ans = cloned;
+        traverse(original.left, cloned.left, target);
+        traverse(original.right, cloned.right, target);
     }
     public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
-        int value = target.val;
-        traverse(cloned, value);
+        traverse(original, cloned, target);
         return ans;
     }
 }
