@@ -1,15 +1,31 @@
 class NumMatrix {
     int[][] arr;
     public NumMatrix(int[][] matrix) {
+        int run_sum = 0;
         arr = matrix;
+        for(int i = 0; i < matrix.length; i++){
+            run_sum = 0;
+            for(int j = 0; j < matrix[0].length; j++){
+                run_sum += matrix[i][j];
+                arr[i][j] = run_sum;
+            }
+        }
+        // for(int i = 0; i < matrix.length; i++){
+        //     run_sum = 0;
+        //     for(int j = 0; j < matrix[0].length; j++){
+        //         System.out.print(arr[i][j] + " ");
+        //     }
+        //     System.out.println();
+        // }
     }
     
     public int sumRegion(int row1, int col1, int row2, int col2) {
         int sum = 0;
         for(int i = row1; i <= row2; i++){
-            for(int j = col1; j <= col2; j++){
-                sum += arr[i][j];
+            if(col1 > 0){
+                sum += (arr[i][col2] - arr[i][col1 - 1]);
             }
+            else sum += arr[i][col2];
         }
         return sum;
     }
