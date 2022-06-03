@@ -10,13 +10,6 @@ class NumMatrix {
                 arr[i][j] = run_sum;
             }
         }
-        // for(int i = 0; i < matrix.length; i++){
-        //     run_sum = 0;
-        //     for(int j = 0; j < matrix[0].length; j++){
-        //         System.out.print(arr[i][j] + " ");
-        //     }
-        //     System.out.println();
-        // }
     }
     
     public int sumRegion(int row1, int col1, int row2, int col2) {
