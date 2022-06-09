@@ -5,7 +5,7 @@ class Solution {
         if(dp[i][j] != 0) return dp[i][j];
         else if(i >= m - 1) return helper(i, j+1, m, n, dp, ob);
         else if(j >= n - 1) return helper(i + 1, j, m, n, dp, ob);
-        else return dp[i][j] = helper(i, j+1, m, n, dp, ob) + helper(i + 1, j, m, n, dp, ob);
+        return dp[i][j] = helper(i, j+1, m, n, dp, ob) + helper(i + 1, j, m, n, dp, ob);
     }
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int m = obstacleGrid.length, n = obstacleGrid[0].length;
