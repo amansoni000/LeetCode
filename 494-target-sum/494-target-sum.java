@@ -1,16 +1,31 @@
-class Solution {
-    int sum = 0, ans = 0;
-    public void helper(int i,int n, int target, int[] nums, int[] dp){
-        if(i == n){
-            if(target == 0) ans+=1;
-            return;
+public class Solution {
+    int total;
+    
+    public int findTargetSumWays(int[] nums, int S) {
+        total = Arrays.stream(nums).sum();
+        
+        int[][] memo = new int[nums.length][2 * total + 1];
+        for (int[] row : memo) {
+            Arrays.fill(row, Integer.MIN_VALUE);
         }
-        helper(i+1, n, target + nums[i], nums, dp);
-        helper(i+1, n, target - nums[i], nums, dp);
+        return helper(nums, 0, 0, S, memo);
     }
-    public int findTargetSumWays(int[] nums, int target) {
-        int[] dp = new int[nums.length];
-        helper(0, nums.length, target, nums, dp);
-        return ans;
+    
+    public int helper(int[] nums, int i, int sum, int S, int[][] memo) {
+        if (i == nums.length) {
+            if (sum == S) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            if (memo[i][sum + total] != Integer.MIN_VALUE) {
+                return memo[i][sum + total];
+            }
+            int add = helper(nums, i + 1, sum + nums[i], S, memo);
+            int subtract = helper(nums, i + 1, sum - nums[i], S, memo);
+            memo[i][sum + total] = add + subtract;
+            return memo[i][sum + total];
+        }
     }
 }
