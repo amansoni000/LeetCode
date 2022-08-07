@@ -19,7 +19,6 @@ class Solution {
         }
         long ans = 0;
         for(long i : arr){
-            System.out.print(i + " ");
             ans += i;
             ans%=mod;
         }
