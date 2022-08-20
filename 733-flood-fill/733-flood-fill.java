@@ -6,8 +6,6 @@ class Solution {
         }
         if(image[i][j] == x){
             image[i][j] = c;
-            // count += 1;
-            // return;
         }
         helper(image, i + 1, j, c, x);
         helper(image, i - 1, j, c, x);
@@ -16,7 +14,6 @@ class Solution {
     }
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
         helper(image, sr, sc, color, image[sr][sc]);
-            // return count;
         return image;
     }
 }
