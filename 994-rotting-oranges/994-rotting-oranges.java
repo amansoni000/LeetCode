@@ -17,7 +17,6 @@ class Solution {
         if(fresh == 0) return 0;
         int[][] direction = {{0,1}, {0,-1}, {1,0}, {-1,0}};
         while(!q.isEmpty()){
-            // System.out.println(q.size());
             int n = q.size();
             day++;
             for(int i = 0; i < n; i++){
