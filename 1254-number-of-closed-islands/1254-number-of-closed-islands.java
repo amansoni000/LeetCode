@@ -1,27 +1,33 @@
 class Solution {
-    public void fill(int[][] grid, int i, int j){
-        int row = grid.length, col = grid[0].length;
-        if(i < 0 || j < 0 || i >= row || j >= col || grid[i][j] == 1) return;
-        if(grid[i][j] == 0) grid[i][j] = 1;
-        int[][] dir = {{1,0}, {0,1}, {-1,0}, {0,-1}};
-        for(int k = 0; k < 4; k++){
-            fill(grid, i + dir[k][0], j + dir[k][1]);
+    
+    static int[] x = {1,0,-1,0};
+    static int[] y = {0,-1,0,1};
+    
+    public static boolean dfs (int[][] grid, int i, int j) {
+        if (i >= grid.length || i < 0 || j >= grid[i].length || j < 0) {
+            return false;
         }
+        if (grid[i][j] == 1) {
+            return true;
+        }
+        grid[i][j] = 1;
+        boolean result = true;
+        boolean top = dfs (grid,i-1,j);
+        boolean right = dfs(grid,i,j+1);
+        boolean bottom = dfs(grid,i+1,j);
+        boolean left = dfs(grid,i,j-1);
+        return top && right && bottom && left;
     }
+    
     public int closedIsland(int[][] grid) {
-        int row = grid.length, col = grid[0].length, count = 0;
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                if(i == 0 || j == 0 || i == row-1 || j == col - 1){
-                    if(grid[i][j] == 0) fill(grid, i, j);
-                }
-            }
-        }
-        for(int i = 0; i < row; i++){
-            for(int j = 0; j < col; j++){
-                if(grid[i][j] == 0){
-                    count+= 1;
-                    fill(grid, i, j);
+        int count = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == 0) {
+                    boolean flag = dfs(grid,i,j);
+                    if (flag) {
+                        count += 1;
+                    }
                 }
             }
         }
