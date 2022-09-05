@@ -19,20 +19,21 @@ class Node {
 
 class Solution {
     public List<List<Integer>> levelOrder(Node root) {
-        List<List<Integer>> ans = new ArrayList<>();
-        if(root == null) return ans;
-        Queue<Node> q = new LinkedList<>();
-        q.add(root);
-        while(!q.isEmpty()){
-            int n = q.size();
-            List<Integer> temp = new ArrayList<>();
-            for(int i = 0; i < n; i++){
-                Node node = q.remove();
-                temp.add(node.val);
-                for(Node x : node.children) q.add(x);
-            }
-            ans.add(temp);
+        return levelOrder(root, 0, new ArrayList<>());
+    }
+    
+    private List<List<Integer>> levelOrder(Node node, int level, List<List<Integer>> order){
+        if (node == null){
+            return order;
         }
-        return ans;
+        List<Integer> list = order.size() > level ?  order.get(level) : new ArrayList<>();
+        list.add(node.val);
+        if (order.size() <= level){
+            order.add(list);
+        }
+        for (Node n : node.children){
+            levelOrder(n, level + 1, order);
+        }
+        return order;
     }
 }
