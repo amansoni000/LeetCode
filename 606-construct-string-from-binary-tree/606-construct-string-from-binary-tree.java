@@ -4,32 +4,17 @@
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
+ *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
-    String str = "";
-    public void traverse(TreeNode root){
-        if(root == null){
-            return;
-        }
-        str += '(';
-        str += String.valueOf(root.val);
-        if(root.left == null && root.right != null){
-            str += "()";
-        }
-        traverse(root.left);
-        traverse(root.right);
-        str += ')';
-    }
-    public String tree2str(TreeNode root) {
-        traverse(root);
-        return str.substring(1,str.length()-1);
+public class Solution {
+    public String tree2str(TreeNode t) {
+        if(t==null)
+            return "";
+        if(t.left==null && t.right==null)
+            return t.val+"";
+        if(t.right==null)
+            return t.val+"("+tree2str(t.left)+")";
+        return t.val+"("+tree2str(t.left)+")("+tree2str(t.right)+")";   
     }
 }
