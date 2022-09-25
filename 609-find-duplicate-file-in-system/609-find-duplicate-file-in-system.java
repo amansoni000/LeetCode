@@ -1,47 +1,22 @@
-class Solution {
-    public List<List<String>> findDuplicate(String[] paths) {
-        HashMap<String, List<String>> map = new HashMap<>();
-        List<List<String>> ans = new ArrayList<>();
-        for(int i = 0; i < paths.length; i++){
-            String str = paths[i];
-            String path = "";
-            int j = 0;
-            for(j = 0; j < str.length(); j++){
-                if(str.charAt(j) == ' ') break;
-                else path += str.charAt(j);
-            }
-            j++;
-            String filename = "";
-            String content = "";
-            Boolean co = false, file = true;
-            while(j < str.length()){
-                if(str.charAt(j) == ')'){
-                    List<String> list = map.getOrDefault(content, new ArrayList<>());
-                    list.add(path + "/" + filename);
-                    map.put(content, list);
-                    filename = "";
-                    content = "";
-                    co = false;
-                    file = true;
-                    j++;
-                }
-                else if(str.charAt(j) == '('){
-                    co = true;
-                    file = false;
-                }
-                else if(file){
-                    filename += str.charAt(j);
-                }
-                else if(co){
-                    content += str.charAt(j);
-                }
-                j++;
+
+public class Solution {
+    public List < List < String >> findDuplicate(String[] paths) {
+        HashMap < String, List < String >> map = new HashMap < > ();
+        for (String path: paths) {
+            String[] values = path.split(" ");
+            for (int i = 1; i < values.length; i++) {
+                String[] name_cont = values[i].split("\\(");
+                name_cont[1] = name_cont[1].replace(")", "");
+                List < String > list = map.getOrDefault(name_cont[1], new ArrayList < String > ());
+                list.add(values[0] + "/" + name_cont[0]);
+                map.put(name_cont[1], list);
             }
         }
-        for(Map.Entry<String, List<String>> entry : map.entrySet()){
-            if(entry.getValue().size() > 1) ans.add(entry.getValue());
+        List < List < String >> res = new ArrayList < > ();
+        for (String key: map.keySet()) {
+            if (map.get(key).size() > 1)
+                res.add(map.get(key));
         }
-        // System.out.println(map);
-        return ans;
+        return res;
     }
 }
