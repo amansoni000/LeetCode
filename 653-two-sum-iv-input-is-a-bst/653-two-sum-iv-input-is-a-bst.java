@@ -18,7 +18,7 @@ class Solution {
     boolean ans = false;
     int val;
     public void helper(TreeNode root){
-        if(root == null) return;
+        if(root == null || ans) return;
         if(set.contains(val - root.val)){
             ans = true;
         }
