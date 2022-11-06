@@ -16,7 +16,6 @@ class Solution {
                 j++;
             }
             if(j-i+1 > k){
-                System.out.println(curr_sum);
                 max_sum = Math.max(max_sum, curr_sum);
             }
         }
