@@ -3,7 +3,6 @@ class Solution {
         int[] coins = new int[100];
         for(int i = 0; i < 100; i++){
             coins[i] = (i + 1) * (i + 1);
-            //filling up coins[] to (100 * 100) since 10^4 is constraint
         }
 
         int[] dp = new int[amount + 1];
