@@ -9,7 +9,6 @@ class Solution {
                 count += 1;
                 i++;
             }
-            // System.out.println(count + " "  + arr[i]);
             if(set.contains(count)) return false;
             else set.add(count);
         }
