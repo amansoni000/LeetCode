@@ -15,7 +15,7 @@ class Solution {
             }
             stk.push(temperatures[i]);
             idx.push(i);
-            System.out.println(stk + " " + temperatures[i]);
+            // System.out.println(stk + " " + temperatures[i]);
         }
         return ans;
     }
