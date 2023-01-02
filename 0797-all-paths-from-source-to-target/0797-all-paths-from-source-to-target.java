@@ -6,10 +6,8 @@ class Solution {
         for(int i = 0; i < arr.length; i++){
             temp.add(arr[i]);
             if(arr[i] == n){
-                // System.out.println(temp);
                 List<Integer> dummy = new ArrayList<>(temp);
                 result.add(dummy);
-                // return;
             }
             else{
                 helper(newGraph[arr[i]], temp);
