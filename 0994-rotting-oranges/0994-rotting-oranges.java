@@ -18,7 +18,6 @@ class Solution {
         if(rotten == 0) return -1;
         
         int[] dir = {0,1,0,-1,0};
-        System.out.println(q);
         while(!q.isEmpty()){
             int size = q.size();
             time++;
@@ -26,12 +25,10 @@ class Solution {
                 Pair<Integer, Integer> pair = q.remove();
                 int old_row = pair.getKey();
                 int old_col = pair.getValue();
-                System.out.println(q);
                 for(int i = 0; i < 4; i++){
                     int new_row = old_row + dir[i];
                     int new_col = old_col + dir[i+1];
                     if(new_row >= 0 && new_col >= 0 && new_row < m && new_col < n && grid[new_row][new_col] == 1){
-                        System.out.println(new_row + " " + new_col);
                         grid[new_row][new_col] = 2;
                         fresh--;
                         q.add(new Pair<>(new_row, new_col));
