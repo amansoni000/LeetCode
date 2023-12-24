@@ -5,11 +5,6 @@ class Solution {
         int count1 = 0;
         int count0 = 0;
         return getCount(s, count1, count0);
-                
-        // System.out.println(getCountFor1 + "  " + getCountFor0);
-        // return Math.min(countForForward, countForBack);
-        
-        
     }
     
     public int getCount(String s, int count1, int count0){
